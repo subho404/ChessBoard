@@ -30,7 +30,7 @@ io.on('connection', function(uniquesocket) {
     
     }else if(!players.black){
         players.black=uniquesocket.id;
-        uniquesocket.emit('plaerRole','b');
+        uniquesocket.emit('playerRole','b');
     }else{
         uniquesocket.emit('spectator');
     }
