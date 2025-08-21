@@ -23,7 +23,7 @@ const renderBoard = () => {
          if(square){
             const pieceElement=document.createElement('div');
             pieceElement.classList.add('piece',square.color=='w' ? 'white' : 'black');
-            pieceElement.innerText='';
+            pieceElement.innerText=getPieceUnicode(square);
             pieceElement.draggable= playerRole===square.color;
             pieceElement.addEventListener('dragstart',(e)=>{
                  if(pieceElement.draggable){
@@ -63,9 +63,15 @@ const renderBoard = () => {
     
 };
 
-const handleMove = () => {};
+const handleMove = () => {
+    const move={
+        from: `${sourceSquare.col}${sourceSquare.row}`,
+        to: `${targetSource.col}${targetSource.row}`,
+        promotion: 'q' 
+    }
+};
 
-const getPieceUnicode = () => {
+const getPieceUnicode = (piece) => {
     const unicodePieces={
         'p': '♟', // Pawn
         'r': '♜', // Rook
@@ -81,7 +87,7 @@ const getPieceUnicode = () => {
         'K': '♚' 
 
     };
-    
+    return unicodePieces[piece.type] || '';
 };
 
 renderBoard();
